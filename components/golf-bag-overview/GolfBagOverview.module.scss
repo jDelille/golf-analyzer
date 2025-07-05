@@ -1,0 +1,46 @@
+@use "../../styles/variables" as vars;
+
+.golfBagOverview {
+  width: 20%;
+  border-radius: 8px;
+  border: 1px solid vars.$borderColor;
+  height: fit-content;
+  .title {
+    padding: 1rem;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: white;
+    border-bottom: 1px solid vars.$borderColor;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    span {
+      font-weight: 400;
+      font-size: 12px;
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+
+    }
+  }
+
+  .clubs {
+    list-style-type: none;
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 30px;
+      font-size: 14px;
+          padding: 1rem;
+      border-bottom: 1px solid vars.$borderColor;
+      &:nth-last-child(1) {
+        border-bottom: none;
+      }
+      span {
+        width: 45px;
+      }
+    }
+  }
+}

@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Poppins } from "next/font/google";
+import LayoutShell from "@/components/layout-shell/LayoutShell";
+import { AuthProvider } from "@/contexts/AuthContext";
+import "../styles/globals.scss";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const poppins = Poppins({
+  variable: "--font-poppins",
+  weight: ["100", "300", "400", "600", "700"],
   subsets: ["latin"],
 });
 
@@ -24,8 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+      <body className={`${poppins.variable}`}>
+        <AuthProvider>
+          <LayoutShell children={children} />
+        </AuthProvider>
       </body>
     </html>
   );

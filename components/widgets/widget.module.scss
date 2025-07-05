@@ -1,0 +1,42 @@
+.widget {
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  gap: 10px;
+  margin-bottom: 1rem;
+  .label {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    color: #999999;
+  }
+  a {
+    text-decoration: none;
+    color: black;
+    padding-left: 1rem;
+    position: relative;
+    top: -10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    span {
+      font-size: 11px;
+      color: #999999;
+    }
+
+    .user {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      img {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+      }
+      .points {
+        margin-left: auto;
+        font-weight: 600;
+      }
+    }
+  }
+}

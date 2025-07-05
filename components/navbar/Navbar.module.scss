@@ -1,0 +1,34 @@
+@use "../../styles/variables" as vars;
+
+.navbarShrink,
+.navbarFull {
+  height: 60px;
+  position: sticky;
+  top: 0;
+  width: calc(100vw - 60px);
+  border-bottom: 1px solid vars.$borderColor;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  margin-left: 60px;
+  transition: all 200ms ease-in-out;
+  transition-delay: 100ms;
+  background-color: vars.$offWhite;
+  .sidebarControl {
+    border: 1px solid vars.$borderColor;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+
+}
+
+.navbarShrink {
+  margin-left: 250px;
+  width: calc(100vw - 250px);
+}

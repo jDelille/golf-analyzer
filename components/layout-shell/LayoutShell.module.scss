@@ -1,0 +1,21 @@
+@use "../../styles/variables" as vars;
+
+.layoutShell {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+
+  .mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    .pageContent {
+      flex: 1;
+      overflow-y: auto;
+      border-right: 1px solid vars.$borderColor;
+      border-left: 1px solid vars.$borderColor;
+    }
+  }
+}

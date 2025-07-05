@@ -1,0 +1,17 @@
+@use '../../styles/variables' as vars;
+
+.recentActivity {
+    border: 1px solid vars.$borderColor;
+    border-radius: 8px;
+    width: 80%;
+    height: 488px;
+    // background-color: #f9f9fa;
+     .title {
+        padding: 1rem;
+        font-size: 16px;
+        font-weight: 600;
+        background-color: white;
+        border-bottom: 1px solid vars.$borderColor;
+
+    }
+}

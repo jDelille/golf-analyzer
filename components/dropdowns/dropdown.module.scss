@@ -1,0 +1,110 @@
+@use "./styles/variables" as vars;
+
+.dropdown {
+  position: absolute;
+  top: 120%; // positions it directly below the icon
+  right: 0;
+  min-width: 205px;
+  width: fit-content;
+  background-color: white;
+  border: 1px solid vars.$borderColor;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 100;
+
+  .option {
+    text-decoration: none;
+    font-size: 14px;
+    color: vars.$black;
+    cursor: pointer;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 10px 30px;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .importHeader {
+    width: 205px;
+    border-bottom: 1px solid vars.$borderColor;
+    padding: 10px 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .notifHeader {
+    border-bottom: 1px solid vars.$borderColor;
+    padding: 10px 20px;
+    width: 400px;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .profileHeader {
+    border-bottom: 1px solid vars.$borderColor;
+    padding: 10px 20px;
+    width: 270px;
+    font-size: 13px;
+    text-transform: uppercase;
+  }
+
+  .notifications {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 30px;
+    gap: 10px;
+    .notification {
+      text-decoration: none;
+      color: vars.$black;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      span {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .profileLinks {
+    ul {
+      list-style-type: none;
+      font-size: 14px;
+      .section {
+        border-bottom: 1px solid vars.$borderColor;
+        padding: 10px 30px;
+
+        li {
+          padding: 10px 0;
+          cursor: pointer;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  .siteLinks {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    span {
+      font-size: 11px;
+    }
+    a {
+      color: vars.$black;
+      text-decoration: none;
+      font-size: 11px;
+      color: gray;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

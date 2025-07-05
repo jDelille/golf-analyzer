@@ -1,0 +1,25 @@
+@use "../../styles/variables" as vars;
+
+.pageHeader {
+  border-bottom: 1px solid vars.$borderColor;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  background-color: vars.$white;
+  padding: 0 2rem;
+  color: #999999;
+
+  .title {
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    span {
+      font-size: 12px;
+    }
+    .page {
+      color: black;
+    }
+  }
+}
