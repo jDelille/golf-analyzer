@@ -1,25 +1,62 @@
 "use client";
 
-import React, { useState } from "react";
-import { Badge, Logo, Home, Calendar, Trophy, Login } from "@/icons";
+import React, { useEffect, useState } from "react";
+import { Badge, Home, Calendar, Trophy } from "@/icons";
 import SidebarLink from "./sidebarLink";
 import { useAuth } from "@/contexts/AuthContext";
 import { logout } from "@/firebase/auth";
 import styles from "./Sidebar.module.scss";
 import { useRouter } from "next/navigation";
+import getUserProfile from "@/hooks/getUserProfile";
+import { UserProfile } from "@/types/getUserProfile";
+
 
 type LeftSidebarProps = {};
 
 const LeftSidebar: React.FC<LeftSidebarProps> = () => {
-  const { user, loading } = useAuth();
+  const { user, loading: authLoading } = useAuth();
   const router = useRouter();
+  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [loading, setLoading] = useState(true);
+
+   useEffect(() => {
+    if (!user) {
+      setProfile(null);
+      setLoading(false);
+      return;
+    }
+
+    async function fetchProfile() {
+      setLoading(true);
+      try {
+        const userData = await getUserProfile();
+        setProfile(userData);
+      } catch (err) {
+        console.error(err);
+        setProfile(null);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProfile();
+  }, [user]);
 
   return (
     <div className={styles.sidebar}>
       <div className={styles.user}>
-        <div onClick={() => router.push("/signup")}>
-          <p>Create an account</p>
-        </div>
+        {authLoading || loading ? (
+          <p>Loading...</p>
+        ) : !user ? (
+          <div onClick={() => router.push("/signup")} className={styles.profileName}>
+            <p>Create an account</p>
+          </div>
+        ) : (
+          <div onClick={() => router.push("/profile")} className={styles.profileName}>
+            <img src={profile?.avatar} alt={profile?.displayName} />
+            <p>{profile?.displayName || user.email}</p>
+          </div>
+        )}
       </div>
       <div className={styles.quickLinks}>
         <div className={styles.labels}>

@@ -11,15 +11,17 @@ const Overview: React.FC<OverviewProps> = () => {
     <div className="page">
       <PageHeader section="Dashboards" page="Overview" />
       <div className="content">
-        <Hero title="Overview" />
-        <OverviewBoxes />
-        <div className="row">
-          <RecentActivity />
-          <GolfBagOverview />
-        </div>
+       
       </div>
     </div>
   );
 };
 
 export default Overview;
+
+//  <Hero title="Overview" />
+//         <OverviewBoxes />
+//         <div className="row">
+//           <RecentActivity />
+//           <GolfBagOverview />
+//         </div>
