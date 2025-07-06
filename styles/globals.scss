@@ -4,38 +4,17 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+    font-family: "poppins";
+
 }
 
 body {
   display: flex;
-  font-family: "poppins";
   background-color: vars.$white;
 }
 
 .page,
 .auth-page {
-  
-
-  .labels {
-    position: sticky;
-    top: 60px;
-    background-color: white;
-    ul {
-      list-style-type: none;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid vars.$borderColor;
-      height: 50px;
-      padding: 1rem 2rem;
-      font-size: 12px;
-      text-transform: uppercase;
-      font-weight: 600;
-      gap: 1rem;
-      li {
-        width: 75px;
-      }
-    }
-  }
   .content {
     padding: 0rem;
     display: flex;

@@ -77,18 +77,37 @@ const RecentActivity: React.FC = () => {
 
   return (
     <div className={styles.recentActivity}>
-
-      {sessions[0]?.shots
-        .filter((shot) => shot.Club)
-        .sort((a, b) => a.Club.localeCompare(b.Club))
-        .map((shot) => (
-          <div key={shot.id} className={styles.shot}>
-            <p>{shot.Club}</p>
-            <p>{shot["Ball Speed(mph)"]} mph</p>
-            <p>{shot["Carry(yd)"]} yds</p>
-            <p>{shot["Total(yd)"]} yds</p>
-          </div>
-        ))}
+      <div className={styles.tableContainer}>
+        <table className={styles.statTable}>
+          <thead>
+            <tr>
+              <th>Club</th>
+              <th>Ball Speed</th>
+              <th>D. Loft</th>
+              <th>Carry</th>
+              <th>Total</th>
+              <th>Apex</th>
+              <th>Offline</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sessions[0]?.shots
+              .filter((shot) => shot.Club)
+              .sort((a, b) => a.Club.localeCompare(b.Club))
+              .map((shot) => (
+                <tr key={shot.id} className={styles.shot}>
+                  <td>{shot.Club}</td>
+                  <td>{shot["Ball Speed(mph)"]} mph</td>
+                  <td>{shot[" Dynamic Loft"]} deg</td>
+                  <td>{shot["Carry(yd)"]} yds</td>
+                  <td>{shot["Total(yd)"]} yds</td>
+                  <td>{shot["Apex(yd)"]} yds</td>
+                  <td>{shot["Offline(yd)"]} yds</td>
+                </tr>
+              ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
