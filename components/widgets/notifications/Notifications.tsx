@@ -2,15 +2,15 @@
 
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, orderBy } from "firebase/firestore";
-import { db } from "@/firebase/firebase";
+import { auth, db } from "@/firebase/firebase";
 import styles from "./Notifications.module.scss";
 import Link from "next/link";
 
 type Notification = {
   id: string;
-  body: string;
-  href: string;
+  message: string;
   createdAt: any;
+  href?: string; // optional, in case you want to add links later
 };
 
 type NotificationWidgetProps = {};
@@ -21,10 +21,19 @@ const NotificationWidget: React.FC<NotificationWidgetProps> = () => {
   useEffect(() => {
     async function fetchNotifications() {
       try {
+        if (!auth.currentUser) {
+          console.error("User not authenticated, cannot fetch notifications.");
+          setLoading(false);
+          return;
+        }
+
+        const uid = auth.currentUser.uid;
+
         const q = query(
-          collection(db, "notifications"),
+          collection(db, "users", uid, "notifications"),
           orderBy("createdAt", "desc")
         );
+
         const querySnapshot = await getDocs(q);
 
         const notifData: Notification[] = querySnapshot.docs.map((doc) => ({
@@ -48,11 +57,22 @@ const NotificationWidget: React.FC<NotificationWidgetProps> = () => {
       <div className={styles.label}>
         <p>Notifications</p>
       </div>
+      {loading && <p>Loading notifications...</p>}
+      {!loading && notifications.length === 0 && <p>No notifications yet.</p>}
       {notifications.map((notif) => (
-        <Link key={notif.id} className={styles.notification} href={notif.href}>
-          <p>{notif.body}</p>
-          <span>{notif.createdAt?.toDate().toLocaleString()}</span>
-        </Link>
+        <div key={notif.id} className={styles.notification}>
+          {notif.href ? (
+            <Link href={notif.href}>
+              <p>{notif.message}</p>
+              <span>{notif.createdAt?.toDate().toLocaleString()}</span>
+            </Link>
+          ) : (
+            <>
+              <p>{notif.message}</p>
+              <span>{notif.createdAt?.toDate().toLocaleString()}</span>
+            </>
+          )}
+        </div>
       ))}
     </div>
   );
