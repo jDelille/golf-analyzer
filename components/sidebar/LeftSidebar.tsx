@@ -8,7 +8,7 @@ import { logout } from "@/firebase/auth";
 import styles from "./Sidebar.module.scss";
 import { useRouter } from "next/navigation";
 import getUserProfile from "@/hooks/getUserProfile";
-import { UserProfile } from "@/types/getUserProfile";
+import { UserProfile } from "@/types/userProfile";
 
 
 type LeftSidebarProps = {};

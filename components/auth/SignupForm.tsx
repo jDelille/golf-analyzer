@@ -22,9 +22,10 @@ const SignupForm: React.FC<SignupFormProps> = () => {
         uid: user.uid,
         email: user.email,
         createdAt: new Date(),
-        displayName: "", // empty for now, let them fill it in later
+        displayName: "",
         bio: "",
         role: "user",
+        avatar: "",
       });
       alert(`Signed up as ${user.email}`);
       router.push("/home");

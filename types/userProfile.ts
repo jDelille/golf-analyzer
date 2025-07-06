@@ -1,3 +1,5 @@
+import { PostData } from "./post";
+
 export type UserProfile = {
   bio: string;
   createdAt: string;
@@ -6,4 +8,10 @@ export type UserProfile = {
   role: string;
   uid: string;
   avatar: string;
+  rank: string;
 }
+
+export type UserProfileWithPosts = {
+  profile: UserProfile | null;
+  posts: PostData[];
+};

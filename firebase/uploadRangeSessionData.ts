@@ -1,5 +1,5 @@
 import { auth, db } from "@/firebase/firebase";
-import { collection, addDoc, doc, serverTimestamp } from "firebase/firestore";
+import { collection, addDoc, serverTimestamp, query, getDocs } from "firebase/firestore";
 
 export type ShotData = {
   Club: string;
@@ -9,7 +9,6 @@ export type ShotData = {
   ["Launch Angle"]: string;
   ["Carry(yd)"]: string;
   ["Total(yd)"]: string;
-  // add any other fields from your CSV you want to store
   [key: string]: string; 
 };
 
@@ -18,17 +17,16 @@ export async function uploadRangeSession(shots: ShotData[]) {
 
   const uid = auth.currentUser.uid;
 
-  // Create a new range session doc
+  // Create the range session
   const sessionRef = await addDoc(
     collection(db, "users", uid, "rangeSessions"),
     {
       createdAt: serverTimestamp(),
       shotCount: shots.length,
-      // add other session-level metadata here if needed (e.g., location, notes)
     }
   );
 
-  // Add each shot as a document in the session's "shots" subcollection
+  // Add shots
   const shotsCollectionRef = collection(
     db,
     "users",
@@ -41,5 +39,41 @@ export async function uploadRangeSession(shots: ShotData[]) {
   const addShotPromises = shots.map((shot) => addDoc(shotsCollectionRef, shot));
   await Promise.all(addShotPromises);
 
-  return sessionRef.id; // return the session ID for redirect or confirmation
+  // Add post referencing this session
+  const postsCollectionRef = collection(db, "users", uid, "posts");
+  const postRef = await addDoc(postsCollectionRef, {
+    type: "import",
+    date: serverTimestamp(),
+    details: {
+      itemName: `You imported a range session with ${shots.length} shots.`,
+    },
+    sessionId: sessionRef.id,
+  });
+
+  // Check if this is the user's first post
+  const postsQuery = query(postsCollectionRef);
+  const postsSnap = await getDocs(postsQuery);
+
+  if (postsSnap.size === 1) {
+    // This is the first post — add a badge
+    const badgesCollectionRef = collection(db, "users", uid, "badges");
+    const badgeRef = await addDoc(badgesCollectionRef, {
+      badgeType: "firstPost",
+      awardedAt: serverTimestamp(),
+      description: "Awarded for publishing your first post!",
+    });
+
+    // Add a post announcing the new badge
+    await addDoc(postsCollectionRef, {
+      type: "badge",
+      date: serverTimestamp(),
+      details: {
+        badgeType: "firstPost",
+        message: "Congrats! You earned your first badge!",
+      },
+      badgeId: badgeRef.id,
+    });
+  }
+
+  return sessionRef.id; 
 }

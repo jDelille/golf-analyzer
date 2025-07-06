@@ -19,7 +19,7 @@ const CsvUploader: React.FC<CsvUploaderProps> = () => {
       skipEmptyLines: true,
       beforeFirstChunk: (chunk) => {
         const lines = chunk.split(/\r\n|\n|\r/);
-        const actualDataLines = lines.slice(2); // Skip first 2 lines if your CSV has a header/header notes
+        const actualDataLines = lines.slice(2); // Skip first 2 lines if CSV has a header/header notes
         return actualDataLines.join("\n");
       },
       complete: (results) => {
