@@ -24,7 +24,6 @@ const Post: React.FC<PostProps> = ({ post }) => {
         <div className={styles.badgePost}>
           <p className={styles.badge}>🏅</p>
           <p>
-            You earned a new badge
             <span className={styles.badgeName}>{post.details.badgeName}</span>
             <span className={styles.description}>{post.details.message}</span>
           </p>
