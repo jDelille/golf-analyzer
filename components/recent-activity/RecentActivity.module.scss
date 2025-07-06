@@ -1,17 +1,28 @@
-@use '../../styles/variables' as vars;
+@use "../../styles/variables" as vars;
 
 .recentActivity {
-    border: 1px solid vars.$borderColor;
-    border-radius: 8px;
-    width: 80%;
-    height: 488px;
-    background-color: white;
-     .title {
-        padding: 1rem;
-        font-size: 16px;
-        font-weight: 600;
-        background-color: white;
-        border-bottom: 1px solid vars.$borderColor;
+  background-color: white;
+  overflow-y: auto;
+  height: fit-content;
 
+  .title {
+    padding: 1rem 2rem;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: white;
+    border-bottom: 1px solid vars.$borderColor;
+  }
+
+  .shot {
+    height: 60px;
+    padding: 2rem 2rem;
+    border-bottom: 1px solid vars.$borderColor;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 14px;
+    p {
+      width: 75px;
     }
+  }
 }

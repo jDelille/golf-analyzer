@@ -8,7 +8,8 @@
   background-color: vars.$white;
   padding: 0 2rem;
   color: #999999;
-
+  position: sticky;
+  top: 0;
   .title {
     font-size: 14px;
     font-weight: 500;
@@ -20,6 +21,15 @@
     }
     .page {
       color: black;
+    }
+  }
+
+  .controls {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    svg {
+      cursor: pointer;
     }
   }
 }

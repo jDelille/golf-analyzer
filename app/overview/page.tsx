@@ -11,7 +11,6 @@ const Overview: React.FC<OverviewProps> = () => {
     <div className="page">
       <PageHeader section="Dashboards" page="Overview" />
       <div className="content">
-       
       </div>
     </div>
   );

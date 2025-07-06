@@ -87,6 +87,12 @@ const LeftSidebar: React.FC<LeftSidebarProps> = () => {
           icon={<Home color="#4d4d4d" size={24} />}
           label="Home"
           href={"/home"}
+          isActive={false}
+        />
+        <SidebarLink
+          icon={<Home color="#4d4d4d" size={24} />}
+          label="Recent Activity"
+          href={"/recent-activity"}
           isActive={true}
         />
         <SidebarLink

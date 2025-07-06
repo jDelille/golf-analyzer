@@ -5,7 +5,8 @@
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-
+  max-width: 80rem;
+  margin: 0 auto;
   .mainContent {
     flex: 1;
     display: flex;

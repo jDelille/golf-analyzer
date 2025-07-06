@@ -1,3 +1,4 @@
+import CsvUploader from "@/components/CsvUploader";
 import PageHeader from "@/components/page-header/PageHeader";
 import React from "react";
 
@@ -6,6 +7,8 @@ const Import: React.FC<ImportProps> = () => {
   return (
     <div className="page">
       <PageHeader section="Pages" page="Import" />
+
+      <CsvUploader />
 
       <div className="content">
         <div className="description">
