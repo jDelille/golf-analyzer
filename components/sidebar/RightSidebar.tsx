@@ -1,6 +1,7 @@
 import React from "react";
 import {
   ActivityWidget,
+  BadgesWidget,
   LeaderboardWidget,
   NotificationWidget,
 } from "../widgets";
@@ -12,6 +13,7 @@ const RightSidebar: React.FC<RightSidebarProps> = () => {
     <div className={styles.sidebarRight}>
       <NotificationWidget />
       <ActivityWidget />
+      <BadgesWidget />
       <LeaderboardWidget />
     </div>
   );

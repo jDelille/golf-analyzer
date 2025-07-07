@@ -16,7 +16,7 @@
   .item {
     text-decoration: none;
     color: vars.$white;
-    padding-left: 1rem;
+    // padding-left: 1rem;
     position: relative;
     top: -10px;
     display: flex;
@@ -40,6 +40,54 @@
         margin-left: auto;
         font-weight: 600;
       }
+    }
+  }
+  .badgeGrid {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
+    .badge,
+    .seeAll {
+      border: 1px solid vars.$borderColor;
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      background-color: vars.$secondaryBgColor;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      
+      .hovered {
+        display: none;
+      }
+      &:hover {
+        cursor: pointer;
+          .hovered {
+            position: absolute;
+          background-color: vars.$secondaryBgColor;
+          border: 1px solid vars.$borderColor;
+          top: -2rem;
+          right: 2rem;
+          z-index: 99;
+          display: flex;
+          min-width: 160px;
+          padding: 5px;
+          color: vars.$secondaryTextColor;
+
+          }
+      }
+      .badgeIcon {
+        max-width: 40px;
+        max-height: 40px;
+      }
+
+    }
+    .seeAll {
+      color: vars.$secondaryTextColor;
+      font-size: 16px;
+      font-weight: 600;
     }
   }
 }
