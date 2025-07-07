@@ -15,6 +15,7 @@ body {
 
 .page,
 .auth-page {
+  
   .content {
     padding: 0rem;
     display: flex;
@@ -23,6 +24,7 @@ body {
     // background-color: #f3f5f9;
     min-height: calc(100vh - 60px);
     overflow-y: auto;
+    
     .row {
       display: flex;
       margin-top: 2rem;
@@ -78,6 +80,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    
   }
 }
 

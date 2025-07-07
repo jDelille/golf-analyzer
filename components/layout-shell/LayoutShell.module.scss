@@ -17,6 +17,25 @@
       overflow-y: auto;
       border-right: 1px solid vars.$borderColor;
       border-left: 1px solid vars.$borderColor;
+
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        background-color: vars.$secondaryBgColor;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: vars.$secondaryTextColor;
+        border-radius: 4px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+      }
+
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: #666;
+      }
     }
   }
 }

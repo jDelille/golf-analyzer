@@ -1,3 +1,4 @@
+import BadgeDisplay from "@/components/badge-display/BadgeDisplay";
 import PageHeader from "@/components/page-header/PageHeader";
 import React from "react";
 
@@ -6,6 +7,7 @@ const Badges: React.FC<BadgesProps> = () => {
   return (
     <div className="page">
       <PageHeader section="Pages" page="Badges" />
+      <BadgeDisplay />
     </div>
   );
 };

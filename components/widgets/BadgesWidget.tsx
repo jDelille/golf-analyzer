@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./widget.module.scss";
 import { badges } from "@/badges/badges";
+import Link from "next/link";
 
 type Badge = {
   id: string;
@@ -50,7 +51,7 @@ const BadgesWidget: React.FC<BadgesProps> = () => {
             );
           }
         })}
-        <div className={styles.seeAll}>+52</div>
+        <Link href={"/badges"} className={styles.seeAll}>+52</Link>
       </div>
     </div>
   );
