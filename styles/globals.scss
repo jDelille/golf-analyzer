@@ -10,7 +10,7 @@
 
 body {
   display: flex;
-  background-color: vars.$white;
+  background-color: vars.$bgColor;
 }
 
 .page,
@@ -92,7 +92,7 @@ body {
     width: 320px;
     height: 450px;
     border-radius: 6px;
-    background-color: vars.$white;
+    background-color: vars.$bgColor;
     .header {
       border-bottom: 1px solid vars.$borderColor;
       padding: 0 1rem;

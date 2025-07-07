@@ -8,7 +8,7 @@ import { logout } from "@/firebase/auth";
 import styles from "./Sidebar.module.scss";
 import { useRouter } from "next/navigation";
 import getUserProfile from "@/hooks/getUserProfile";
-import { UserProfile } from "@/types/userProfile";
+import { UserProfileWithPosts } from "@/types/userProfile";
 
 
 type LeftSidebarProps = {};
@@ -16,7 +16,7 @@ type LeftSidebarProps = {};
 const LeftSidebar: React.FC<LeftSidebarProps> = () => {
   const { user, loading: authLoading } = useAuth();
   const router = useRouter();
-  const [profile, setProfile] = useState<UserProfile | null>(null);
+  const [profile, setProfile] = useState<UserProfileWithPosts | null>(null);
   const [loading, setLoading] = useState(true);
 
    useEffect(() => {
@@ -42,6 +42,8 @@ const LeftSidebar: React.FC<LeftSidebarProps> = () => {
     fetchProfile();
   }, [user]);
 
+  const userInfo = profile?.profile;
+
   return (
     <div className={styles.sidebar}>
       <div className={styles.user}>
@@ -53,8 +55,8 @@ const LeftSidebar: React.FC<LeftSidebarProps> = () => {
           </div>
         ) : (
           <div onClick={() => router.push("/profile")} className={styles.profileName}>
-            <img src={profile?.avatar} alt={profile?.displayName} />
-            <p>{profile?.displayName || user.email}</p>
+            <img src={userInfo?.avatar} alt={userInfo?.displayName} />
+            <p>{userInfo?.displayName || user.email}</p>
           </div>
         )}
       </div>

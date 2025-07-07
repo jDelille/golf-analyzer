@@ -4,18 +4,24 @@ import React, { useEffect, useState } from 'react';
 import styles from './Profile.module.scss';
 import getUserProfileAndPosts from '@/hooks/getUserProfile';
 import ProfileHeader from './profile-header/ProfileHeader';
-import { UserProfileWithPosts } from '@/types/userProfile';
+import { ClubMaxCarry, UserProfileWithPosts } from '@/types/userProfile';
 import Feed from '../feed/Feed';
+import { getMaxCarryPerClub } from '@/hooks/range-session/maxCarryPerClub';
 
 const Profile: React.FC = () => {
   const [data, setData] = useState<UserProfileWithPosts | null>(null);
+    const [maxCarryByClub, setMaxCarryByClub] = useState<Record<string, ClubMaxCarry>>({});
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+    useEffect(() => {
     async function fetchData() {
       try {
-        const result = await getUserProfileAndPosts();
-        setData(result);
+        const [profileAndPosts, maxCarry] = await Promise.all([
+          getUserProfileAndPosts(),
+          getMaxCarryPerClub(),
+        ]);
+        setData(profileAndPosts);
+        setMaxCarryByClub(maxCarry);
       } catch (error) {
         console.error(error);
         setData(null);
@@ -28,6 +34,8 @@ const Profile: React.FC = () => {
 
   if (loading) return <p>Loading profile...</p>;
   if (!data?.profile) return <p>No profile found.</p>;
+
+  console.log(maxCarryByClub)
 
   return (
     <div className={styles.profile}>

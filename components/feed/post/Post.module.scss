@@ -2,10 +2,11 @@
 
 .post {
   border-bottom: 1px solid vars.$borderColor;
-  background-color: white;
+  background-color: vars.$bgColor;
   font-size: 14px;
   width: 100%;
   position: relative;
+  color: vars.$white;
 }
 
 .importPost {

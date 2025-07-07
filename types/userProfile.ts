@@ -15,3 +15,11 @@ export type UserProfileWithPosts = {
   profile: UserProfile | null;
   posts: PostData[];
 };
+
+export type ClubMaxCarry = {
+  carry: number;
+  shotId: string;
+  sessionId: string;
+};
+
+export type MaxCarryByClub = Record<string, ClubMaxCarry>;

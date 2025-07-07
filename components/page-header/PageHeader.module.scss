@@ -5,9 +5,9 @@
   display: flex;
   align-items: center;
   height: 60px;
-  background-color: vars.$white;
+  background-color: vars.$bgColor;
   padding: 0 2rem;
-  color: #999999;
+  color: vars.$secondaryTextColor;
   position: sticky;
   top: 0;
   .title {
@@ -20,7 +20,7 @@
       font-size: 12px;
     }
     .page {
-      color: black;
+      color: vars.$white;
     }
   }
 

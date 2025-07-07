@@ -4,7 +4,7 @@
 .sidebarRight {
   height: 100vh;
   width: 270px;
-  background-color: vars.$white;
+  background-color: vars.$bgColor;
   color: vars.$black;
   position: relative;
   padding: 0 2rem;
@@ -25,6 +25,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      color: vars.$white;
       img {
         max-width: 30px;
         height: 30px;
@@ -38,6 +39,8 @@
     display: flex;
     flex-direction: column;
     margin-top: 0.75rem;
+            color: vars.$secondaryTextColor;
+
     .labels {
       display: flex;
       gap: 2rem;
@@ -45,10 +48,10 @@
         cursor: pointer;
       }
       .active {
-        color: #999999;
+        color: white;
       }
       .inactive {
-        color: #cccccc;
+        color: vars.$secondaryTextColor;
       }
     }
     ul {
@@ -67,7 +70,7 @@
     gap: 10px;
     .sectionLabel {
       margin: 0.5rem 0;
-      color: #999999;
+      color: vars.$secondaryTextColor;
     }
     .linkItem,
     .linkItemInactive {
@@ -77,18 +80,19 @@
       text-decoration: none;
       padding: 10px 0.75rem;
       height: 40px;
+              color: vars.$secondaryTextColor;
 
       svg {
         height: 100%;
       }
       span {
         height: 100%;
-        color: black;
       }
     }
     .linkItem {
-      background-color: #f5f5f5;
+      background-color: vars.$secondaryBgColor;
       border-radius: 9px;
+      color: white;
     }
   }
 
@@ -103,7 +107,7 @@
       height: 60px;
       display: flex;
       align-items: center;
-      color: #999999;
+      color: vars.$secondaryTextColor;
     }
     a {
       text-decoration: none;

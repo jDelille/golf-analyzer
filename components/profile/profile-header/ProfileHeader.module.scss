@@ -2,7 +2,7 @@
 
 .profileHeader {
   display: flex;
-  background-color: white;
+  background-color: vars.$bgColor;
   position: relative;
   flex-direction: column;
   border-bottom: 1px solid vars.$borderColor;
@@ -22,7 +22,7 @@
         border-radius: 50%;
         width: 80px;
         height: 80px;
-        outline: 2px solid white;;
+        outline: 2px solid vars.$borderColor;
       }
     }
   }
@@ -36,11 +36,11 @@
     height: 100px;
     justify-content: center;
     position: relative;
-    color: rgb(95, 95, 95);
+    color: vars.$secondaryTextColor;
     h2 {
       font-weight: 600;
       font-size: 17px;
-      color: black;
+      color: vars.$white;
       display: flex;
       align-items: center;
       gap: 10px;
