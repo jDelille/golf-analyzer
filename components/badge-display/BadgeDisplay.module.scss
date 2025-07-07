@@ -6,7 +6,8 @@
   flex-direction: column;
   gap: 10px;
   font-size: 14px;
-  .badge {
+  .unlocked, 
+  .locked {
     border-bottom: 1px solid vars.$borderColor;
     padding: 1rem 2rem;
     display: flex;

@@ -1,4 +1,4 @@
-@use '../../styles/variables' as vars;
+@use "../../styles/variables" as vars;
 
 .widget {
   display: flex;
@@ -24,7 +24,7 @@
     gap: 5px;
     span {
       font-size: 10px;
-    color: vars.$secondaryTextColor;
+      color: vars.$secondaryTextColor;
     }
 
     .user {
@@ -58,14 +58,14 @@
       align-items: center;
       justify-content: center;
       position: relative;
-      
+
       .hovered {
         display: none;
       }
       &:hover {
         cursor: pointer;
-          .hovered {
-            position: absolute;
+        .hovered {
+          position: absolute;
           background-color: vars.$secondaryBgColor;
           border: 1px solid vars.$borderColor;
           top: -2rem;
@@ -75,14 +75,12 @@
           min-width: 160px;
           padding: 5px;
           color: vars.$secondaryTextColor;
-
-          }
+        }
       }
       .badgeIcon {
         max-width: 40px;
         max-height: 40px;
       }
-
     }
     .seeAll {
       color: vars.$secondaryTextColor;
