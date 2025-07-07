@@ -15,6 +15,7 @@ type BadgePost = {
     badgeName: string;
     badgeImage: string; 
     message: string;
+    badgeIcon: string;
   };
 };
 

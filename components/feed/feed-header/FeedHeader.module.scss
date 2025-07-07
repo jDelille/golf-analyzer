@@ -1,0 +1,42 @@
+@use '../../../styles/variables' as vars;
+.feedHeader {
+    color: vars.$white;
+    display: flex;
+    border-bottom: 1px solid vars.$borderColor;
+    font-size: 12px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .feed,
+    .inactiveFeed {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        &:hover {
+            cursor: pointer;
+        }
+        &::after {
+            content: "";
+            position: absolute;
+            height: 3px;
+            width: 100%;
+            bottom: -14px;
+        }
+    }
+
+    .feed {
+        &::after {
+            background-color: rgb(9, 177, 177);
+        }
+    }
+
+    .inactiveFeed {
+        color: vars.$secondaryTextColor;
+        &::after {
+            background-color: vars.$secondaryBgColor;
+        }
+    }
+}

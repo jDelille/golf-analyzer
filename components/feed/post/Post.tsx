@@ -8,6 +8,7 @@ type PostProps = {
 };
 
 const Post: React.FC<PostProps> = ({ post }) => {
+
   let content;
   switch (post.type) {
     case "import":
@@ -22,7 +23,9 @@ const Post: React.FC<PostProps> = ({ post }) => {
     case "badge":
       content = (
         <div className={styles.badgePost}>
-          <p className={styles.badge}>🏅</p>
+          <div className={styles.badge}>
+            <img src={`${post.details.badgeIcon}.png`} alt="" />
+          </div>
           <p>
             <span className={styles.badgeName}>{post.details.badgeName}</span>
             <span className={styles.description}>{post.details.message}</span>
