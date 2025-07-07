@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "@/firebase/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, getDocs, Timestamp } from "firebase/firestore";
+
+type BadgeData = {
+  badgeType: string;
+  awardedAt: Timestamp; 
+};
 
 export function useUserBadges() {
-  const [earnedBadgeIds, setEarnedBadgeIds] = useState<string[]>([]);
+  const [earnedBadges, setEarnedBadges] = useState<Record<string, Date>>({});
 
   useEffect(() => {
     async function fetchBadges() {
       if (!auth.currentUser) {
-        setEarnedBadgeIds([]);
+        setEarnedBadges({});
         return;
       }
 
@@ -16,13 +21,19 @@ export function useUserBadges() {
       const badgesCollectionRef = collection(db, "users", uid, "badges");
       const badgesSnap = await getDocs(badgesCollectionRef);
 
-      const badgeTypes = badgesSnap.docs.map(doc => doc.data().badgeType as string);
+      const badgesData: Record<string, Date> = {};
+      badgesSnap.docs.forEach((doc) => {
+        const data = doc.data() as BadgeData;
+        if (data.badgeType && data.awardedAt) {
+          badgesData[data.badgeType] = data.awardedAt.toDate();
+        }
+      });
 
-      setEarnedBadgeIds(badgeTypes);
+      setEarnedBadges(badgesData);
     }
 
     fetchBadges();
   }, []);
 
-  return { earnedBadgeIds };
+  return { earnedBadges };
 }

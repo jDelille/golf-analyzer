@@ -10,28 +10,32 @@ type BadgeDisplayProps = {};
 const BadgeDisplay: React.FC<BadgeDisplayProps> = () => {
   const badgeList = badges;
 
- const {earnedBadgeIds} = useUserBadges();
+  const { earnedBadges } = useUserBadges();
 
-
+  // Sort badges: unlocked first
   const sortedBadges = badgeList.slice().sort((a, b) => {
-    const aEarned = earnedBadgeIds.includes(a.id);
-    const bEarned = earnedBadgeIds.includes(b.id);
+    const aEarned = a.id in earnedBadges;
+    const bEarned = b.id in earnedBadges;
 
     if (aEarned === bEarned) return 0;
     return aEarned ? -1 : 1;
   });
 
-  console.log(earnedBadgeIds)
-
   return (
     <div className={styles.badgeDisplay}>
-       {sortedBadges.map((badge) => (
-        <Badge
-          key={badge.id}
-          badge={badge}
-          earned={earnedBadgeIds.includes(badge.id as string)}
-        />
-      ))}
+      {sortedBadges.map((badge) => {
+        const earned = badge.id in earnedBadges;
+        const unlockedDate = earned ? earnedBadges[badge.id] : null;
+
+        return (
+          <Badge
+            key={badge.id}
+            badge={badge}
+            earned={earned}
+            unlockedDate={unlockedDate} // pass unlocked date as a prop
+          />
+        );
+      })}
     </div>
   );
 };

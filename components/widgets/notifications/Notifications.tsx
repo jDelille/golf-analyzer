@@ -59,21 +59,25 @@ const NotificationWidget: React.FC<NotificationWidgetProps> = () => {
       </div>
       {loading && <p>Loading notifications...</p>}
       {!loading && notifications.length === 0 && <p>No notifications yet.</p>}
-      {notifications.map((notif) => (
-        <div key={notif.id} className={styles.notification}>
-          {notif.href ? (
-            <Link href={notif.href}>
-              <p>{notif.message}</p>
-              <span>{notif.createdAt?.toDate().toLocaleString()}</span>
-            </Link>
-          ) : (
-            <>
-              <p>{notif.message}</p>
-              <span>{notif.createdAt?.toDate().toLocaleString()}</span>
-            </>
-          )}
-        </div>
-      ))}
+      {notifications.map((notif, index) => {
+        if (index < 3) {
+          return (
+            <div key={notif.id} className={styles.notification}>
+              {notif.href ? (
+                <Link href={notif.href}>
+                  <p>{notif.message}</p>
+                  <span>{notif.createdAt?.toDate().toLocaleString()}</span>
+                </Link>
+              ) : (
+                <>
+                  <p>{notif.message}</p>
+                  <span>{notif.createdAt?.toDate().toLocaleString()}</span>
+                </>
+              )}
+            </div>
+          );
+        }
+      })}
     </div>
   );
 };

@@ -6,7 +6,7 @@
   flex-direction: column;
   gap: 10px;
   font-size: 14px;
-  .unlocked, 
+  .unlocked,
   .locked {
     border-bottom: 1px solid vars.$borderColor;
     padding: 1rem 2rem;
@@ -26,8 +26,27 @@
       img {
         max-width: 40px;
         max-height: 40px;
+      }
+    }
+    .badgeText {
+      display: flex;
+      flex-direction: column;
+      color: vars.$white;
+      width: 100%;
+      .badgeName {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-
+        small {
+          color: vars.$secondaryTextColor;
+          font-size: 10px;
+        }
+      }
+      .description {
+        color: vars.$secondaryTextColor;
+        font-style: italic;
+        font-size: 12px;
       }
     }
   }
